@@ -376,20 +376,6 @@ Dashboard Pondok Pesantren
         <param name='filter' value='publish=yes' />
       </object>
     </div>
-    <script type='text/javascript'>
-      var divElement = document.getElementById('viz1756269959344');
-      var vizElement = divElement.getElementsByTagName('object')[0];
-      if (divElement.offsetWidth > 800) { 
-        vizElement.style.width='100%';vizElement.style.height = (divElement.offsetWidth * 0.53) + "px"; 
-      } else if (divElement.offsetWidth > 500) { 
-        vizElement.style.width='100%';vizElement.style.height = (divElement.offsetWidth * 0.53) + "px"; 
-      } else { 
-        vizElement.style.width='100%';vizElement.style.height='807px';
-      }                     
-      var scriptElement = document.createElement('script');                    
-      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
-      vizElement.parentNode.insertBefore(scriptElement, vizElement);
-    </script>
 
 </div>
 </div> 
@@ -402,7 +388,7 @@ Dashboard Pondok Pesantren
 
 <script>
 function resizeTableau(){
-  var divElement=document.getElementById('viz1755230272312');
+  var divElement=document.getElementById('viz1756269959344');
   var vizElement=divElement.getElementsByTagName('object')[0];
   vizElement.style.width='100%';
 if (window.innerWidth < 768) {
@@ -410,7 +396,7 @@ if (window.innerWidth < 768) {
   vizElement.style.height = '600px';
 } else {
   // untuk layar besar
-  vizElement.style.height = (divElement.offsetWidth * 0.48) + 'px';
+  vizElement.style.height = (divElement.offsetWidth * 0.53) + 'px';
 }
 }
 
@@ -419,7 +405,7 @@ window.addEventListener('resize',resizeTableau);
 
 var script=document.createElement('script');
 script.src='https://public.tableau.com/javascripts/api/viz_v1.js';
-document.getElementById('viz1755230272312').appendChild(script);
+document.getElementById('viz1756269959344').appendChild(script);
 
 function toggleMenu(){
   const navbar=document.querySelector(".navbar");
