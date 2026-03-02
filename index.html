@@ -345,12 +345,28 @@ html, body {
 
   @media(max-width:768px){
 
+/* ================= MOBILE ================= */
+@media(max-width:768px){
   header{padding:30px;}
   .logo{width:45px;}
   .title h1{font-size:15px;}
   .title p{font-size:12px;}
-    .search-icon{display:flex;}
-    .search-title h2{font-size:12px;}
+
+  /* Tambahkan kode di bawah ini */
+  .search-trigger span {
+    display: none; /* Menyembunyikan teks "Pencarian Dashboard" */
+  }
+
+  .search-trigger {
+    padding: 10px; /* Membuat tombol menjadi bulat/simetris */
+    border-radius: 50%; 
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
   }
 </style>
 
@@ -547,6 +563,7 @@ document.getElementById("searchOverlay").addEventListener("click", function(e){
 
 </body>
 </html>
+
 
 
 
