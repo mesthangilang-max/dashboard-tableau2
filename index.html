@@ -58,6 +58,34 @@ header {
   z-index: 1000;
 }
 
+.weather-card {
+  position: absolute;
+  top: 30px;
+  right: 5%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  animation: float 4s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.weather-card i { font-size: 30px; color: #fbc02d; }
+.weather-temp { font-size: 22px; font-weight: 700; color: var(--primary-green); }
+.weather-desc { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
 .hero h2 { font-size: 34px; margin-bottom: 4px;}
 .hero h3 { opacity: 0.9; font-size: 24px; font-weight: 600; margin-bottom: 60px }
 .hero p { margin-bottom: 5px; font-size: 20px; font-weight: 700;}
@@ -265,6 +293,11 @@ footer {
 </header>
 
 <section class="hero">
+  <div class="weather-card" id="weatherWidget">
+    <i class="fa-solid fa-circle-notch fa-spin" style="color: var(--primary-green)"></i>
+    <span class="weather-desc">Cek Cuaca...</span>
+  </div>
+
   <h2>Dashboard Data Statistik</h2>
   <h3>Kantor Kementerian Agama Kota Yogyakarta</h3>
   <p>Temukan Dashboard Visualisasi Data</p>
@@ -376,7 +409,33 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock(); // Panggil sekali saat load awal
 
-// Data menu untuk fungsi pencarian
+// 2. CUACA YOGYAKARTA
+async function updateWeather() {
+  try {
+    const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-7.7956&longitude=110.3695&current=temperature_2m,weather_code&timezone=Asia%2FJakarta');
+    const data = await res.json();
+    const temp = Math.round(data.current.temperature_2m);
+    const code = data.current.weather_code;
+    
+    let icon = "fa-sun"; let desc = "Cerah";
+    if (code > 0 && code <= 3) { icon = "fa-cloud-sun"; desc = "Berawan"; }
+    else if (code > 3 && code <= 48) { icon = "fa-smog"; desc = "Kabut"; }
+    else if (code > 48 && code <= 67) { icon = "fa-cloud-showers-heavy"; desc = "Hujan"; }
+    else if (code > 70) { icon = "fa-cloud-bolt"; desc = "Badai"; }
+
+    document.getElementById('weatherWidget').innerHTML = `
+      <i class="fa-solid ${icon}"></i>
+      <div class="weather-temp">${temp}°C</div>
+      <div class="weather-desc">${desc}</div>
+    `;
+  } catch (e) {
+    document.getElementById('weatherWidget').innerHTML = '<span class="weather-desc">Offline</span>';
+  }
+}
+updateWeather();
+setInterval(updateWeather, 600000);
+
+// 3. Fungsi pencarian
 const menuData = [
   {name:"Pemeluk Agama", link:"Pemeluk.html"},
   {name:"Tempat Ibadah", link:"Tempat Ibadah.html"},
