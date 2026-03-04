@@ -41,28 +41,27 @@ header {
 /* ===== HERO SECTION DENGAN BACKGROUND GAMBAR ===== */
 .hero {
   /* Menggabungkan gradient hijau dengan gambar latar belakang */
-  background: linear-gradient(135deg, rgba(46, 125, 50, 0.85) 0%, rgba(27, 94, 32, 0.9) 100%), 
-              url('https://yogyakartakota.kemenag.go.id/wp-content/uploads/2024/09/Foto-Kantor-Kementerian-Agama-Kota-Yogyakarta-WM.jpeg');
+  background: linear-gradient(rgba(255,255,255,0.95), rgba(200,200,200,0.95)), url('https://yogyakartakota.kemenag.go.id/wp-content/uploads/2024/09/Foto-Kantor-Kementerian-Agama-Kota-Yogyakarta-WM.jpeg'); 
   
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Memberikan efek parallax saat di-scroll */
-  color: white;
   text-align: center;
-  padding: 120px 20px;
+  padding: 110px 20px;
   position: relative;
+color: var(--primary-green);
   z-index: 1000;
 }
 
 
-.hero h2 { font-size: 32px; margin-bottom: 4px; }
-.hero h3 {  opacity: 0.9; font-size: 20px; font-weight: 500; margin-bottom: 60px; }
-.hero p { margin-bottom: 5px; font-size: 20px; }
+.hero h2 { font-size: 42px; margin-bottom: 4px;}
+.hero h3 {  opacity: 0.9; font-size: 24px; font-weight: 500; margin-bottom: 60px }
+.hero p { margin-bottom: 5px; font-size: 20px; font-weight: 500;}
 
 
 /* Modifikasi Search Bar agar lebih 'Glassmorphism' */
 .search-wrapper {
-  max-width: 450px;
+  max-width: 500px;
   margin: 0 auto;
   position: relative;
   z-index: 10;
