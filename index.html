@@ -34,26 +34,35 @@ header {
 }
 
 .logo-container { display: flex; align-items: center; gap: 12px; }
-.logo-container img { width: 40px; }
-.logo-text h1 { font-size: 18px; font-weight: 700; text-transform: uppercase; }
+.logo-container img { width: 30px; }
+.logo-text h1 { font-size: 14px; font-weight: 600; text-transform: uppercase; }
 
-/* ===== HERO SECTION DENGAN LINGKARAN BERGERAK ===== */
+
+/* ===== HERO SECTION DENGAN BACKGROUND GAMBAR ===== */
 .hero {
-  background: linear-gradient(135deg, var(--medium-green) 0%, var(--primary-green) 100%);
+  /* Menggabungkan gradient hijau dengan gambar latar belakang */
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.85) 0%, rgba(27, 94, 32, 0.9) 100%), 
+              url('https://yogyakartakota.kemenag.go.id/wp-content/uploads/2024/09/Foto-Kantor-Kementerian-Agama-Kota-Yogyakarta-WM.jpeg');
+  
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Memberikan efek parallax saat di-scroll */
   color: white;
   text-align: center;
-  padding: 120px 20px; /* Memberi ruang lebih di area hero */
+  padding: 120px 20px;
   position: relative;
-z-index:1000;
+  z-index: 1000;
 }
 
-.hero h2 { font-size: 32px; margin-bottom: 10px; }
-.hero p { opacity: 0.9; margin-bottom: 20px; font-size: 18px; }
+
+.hero h2 { font-size: 32px; margin-bottom: 4px; }
+.hero h3 {  opacity: 0.9; font-size: 20px; font-weight: 500; margin-bottom: 60px; }
+.hero p { margin-bottom: 5px; font-size: 20px; }
 
 
 /* Modifikasi Search Bar agar lebih 'Glassmorphism' */
 .search-wrapper {
-  max-width: 650px;
+  max-width: 450px;
   margin: 0 auto;
   position: relative;
   z-index: 10;
@@ -85,6 +94,7 @@ z-index:1000;
   padding-left: 25px; /* Efek geser sedikit ke kanan agar terlihat interaktif */
   transition: all 0.2s ease; /* Membuat transisi warna terasa halus */
 }
+
 
 /* ===== SECTION CONTENT ===== */
 .section {
@@ -237,8 +247,9 @@ footer {
 </header>
 
 <section class="hero">
-  <p>Dashboard Data Statistik Kementerian Agama Kota Yogyakarta</p>
-  <h2>Temukan Dashboard Visualisasi Data</h2>
+  <h2>Dashboard Data Statistik</h2>
+  <h3>Kantor Kementerian Agama Kota Yogyakarta</h3>
+  <p>Temukan Dashboard Visualisasi Data</p>
   <div class="search-wrapper">
     <input type="text" id="searchInput" placeholder="Cari data statistik..." onkeyup="searchMenu()">
     <i class="fa-solid fa-magnifying-glass"></i>
@@ -384,14 +395,3 @@ document.addEventListener('click', function(event) {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
