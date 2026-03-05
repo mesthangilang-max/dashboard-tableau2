@@ -273,23 +273,22 @@ footer {
   .datetime-container { font-size: 11px; }
   .hero { padding: 80px 20px; }
   .hero h2 { font-size: 18px; margin-bottom: 10px}
-  .hero p { font-size: 14px; margin-bottom: 10px}
+  .hero p { font-size: 14px; margin-bottom: 20px}
   .section-title { font-size: 22px; }
 .weather-card {
-    position: relative; 
-    top: 315px; /* Memberi jarak di bawah search bar */
+    position: relative; /* Berubah dari absolute ke relative */
+    top: 0;
     right: 0;
-    margin: 0 auto;
-    width: fit-content;
-    padding: 10px 25px;
-    flex-direction: row; /* Tampilan horizontal agar tidak makan tempat */
-    gap: 15px;
-    background: rgba(255, 255, 255, 0.7);
+    margin: 0 auto 30px; /* Tengahkan dan beri jarak ke bawah */
+    width: 100px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.6);
   }
   
   .weather-card i { font-size: 24px; }
   .weather-temp { font-size: 18px; }
   .weather-desc { font-size: 10px; }
+
 }
 </style>
 </head>
@@ -308,11 +307,6 @@ footer {
 </header>
 
 <section class="hero">
-  <div class="weather-card" id="weatherWidget">
-    <i class="fa-solid fa-circle-notch fa-spin" style="color: var(--primary-green)"></i>
-    <span class="weather-desc">Cek Cuaca...</span>
-  </div>
-
   <h2>Dashboard Data Statistik</h2>
   <h3>Kantor Kementerian Agama Kota Yogyakarta</h3>
   <p>Temukan Dashboard Visualisasi Data</p>
@@ -321,6 +315,12 @@ footer {
     <i class="fa-solid fa-magnifying-glass"></i>
     <div id="searchResults"></div>
   </div>
+
+  <div class="weather-card" id="weatherWidget">
+    <i class="fa-solid fa-circle-notch fa-spin" style="color: var(--primary-green)"></i>
+    <span class="weather-desc">Cek Cuaca...</span>
+  </div>
+
 </section>
 
 <section class="section">
@@ -490,12 +490,3 @@ document.addEventListener('click', function(event) {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
