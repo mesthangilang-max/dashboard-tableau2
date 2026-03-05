@@ -47,7 +47,7 @@ header {
 
 /* ===== HERO SECTION ===== */
 .hero {
-  background: linear-gradient(rgba(255,255,255,0.95), rgba(200,200,200,0.95)), url('https://yogyakartakota.kemenag.go.id/wp-content/uploads/2024/09/Foto-Kantor-Kementerian-Agama-Kota-Yogyakarta-WM.jpeg'); 
+  background: linear-gradient(rgba(255,255,255,0.99), rgba(200,200,200,0.87)), url('https://yogyakartakota.kemenag.go.id/wp-content/uploads/2024/09/Foto-Kantor-Kementerian-Agama-Kota-Yogyakarta-WM.jpeg'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -57,34 +57,6 @@ header {
   color: var(--primary-green);
   z-index: 1000;
 }
-
-.weather-card {
-  position: absolute;
-  top: 30px;
-  right: 5%;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 15px 20px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.4);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  animation: float 4s ease-in-out infinite;
-  z-index: 5;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-.weather-card i { font-size: 30px; color: #fbc02d; }
-.weather-temp { font-size: 22px; font-weight: 700; color: var(--primary-green); }
-.weather-desc { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
 .hero h2 { font-size: 34px; margin-bottom: 4px;}
 .hero h3 { opacity: 0.9; font-size: 24px; font-weight: 600; margin-bottom: 60px }
@@ -127,7 +99,7 @@ header {
   color: var(--primary-green);
   font-size: 20px;
   pointer-events: none;
-  animation: search-icon-bounce 3s infinite ease-in-out;
+  animation: search-icon-bounce 2s infinite ease-in-out;
 }
 
 #searchResults {
@@ -273,22 +245,8 @@ footer {
   .datetime-container { font-size: 11px; }
   .hero { padding: 80px 20px; }
   .hero h2 { font-size: 18px; margin-bottom: 10px}
-  .hero p { font-size: 14px; margin-bottom: 20px}
+  .hero p { font-size: 14px; margin-bottom: 10px}
   .section-title { font-size: 22px; }
-.weather-card {
-    position: relative; /* Berubah dari absolute ke relative */
-    top: 0;
-    right: 0;
-    margin: 0 auto 30px; /* Tengahkan dan beri jarak ke bawah */
-    width: 100px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.6);
-  }
-  
-  .weather-card i { font-size: 24px; }
-  .weather-temp { font-size: 18px; }
-  .weather-desc { font-size: 10px; }
-
 }
 </style>
 </head>
@@ -314,11 +272,6 @@ footer {
     <input type="text" id="searchInput" placeholder="Cari data statistik..." onkeyup="searchMenu()">
     <i class="fa-solid fa-magnifying-glass"></i>
     <div id="searchResults"></div>
-  </div>
-
-  <div class="weather-card" id="weatherWidget">
-    <i class="fa-solid fa-circle-notch fa-spin" style="color: var(--primary-green)"></i>
-    <span class="weather-desc">Cek Cuaca...</span>
   </div>
 
 </section>
@@ -399,7 +352,8 @@ footer {
 </footer>
 
 <script>
-// FUNGSI UPDATE JAM & TANGGAL
+
+// 1. FUNGSI UPDATE JAM & TANGGAL
 function updateClock() {
   const now = new Date();
   const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
@@ -424,33 +378,8 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock(); // Panggil sekali saat load awal
 
-// 2. CUACA YOGYAKARTA
-async function updateWeather() {
-  try {
-    const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-7.7956&longitude=110.3695&current=temperature_2m,weather_code&timezone=Asia%2FJakarta');
-    const data = await res.json();
-    const temp = Math.round(data.current.temperature_2m);
-    const code = data.current.weather_code;
-    
-    let icon = "fa-sun"; let desc = "Cerah";
-    if (code > 0 && code <= 3) { icon = "fa-cloud-sun"; desc = "Berawan"; }
-    else if (code > 3 && code <= 48) { icon = "fa-smog"; desc = "Kabut"; }
-    else if (code > 48 && code <= 67) { icon = "fa-cloud-showers-heavy"; desc = "Hujan"; }
-    else if (code > 70) { icon = "fa-cloud-bolt"; desc = "Badai"; }
 
-    document.getElementById('weatherWidget').innerHTML = `
-      <i class="fa-solid ${icon}"></i>
-      <div class="weather-temp">${temp}°C</div>
-      <div class="weather-desc">${desc}</div>
-    `;
-  } catch (e) {
-    document.getElementById('weatherWidget').innerHTML = '<span class="weather-desc">Offline</span>';
-  }
-}
-updateWeather();
-setInterval(updateWeather, 600000);
-
-// 3. Fungsi pencarian
+// 2. Fungsi pencarian
 const menuData = [
   {name:"Pemeluk Agama", link:"Pemeluk.html"},
   {name:"Tempat Ibadah", link:"Tempat Ibadah.html"},
