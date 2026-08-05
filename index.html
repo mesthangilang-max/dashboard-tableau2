@@ -138,6 +138,7 @@ header {
   color: var(--text-muted);
   font-size: 18px;
   margin-right: 12px;
+animation: search-icon-bounce 3s infinite ease-in-out;
 }
 
 .search-box input {
@@ -214,19 +215,23 @@ header {
   height: auto;
   filter: drop-shadow(0 15px 25px rgba(0,0,0,0.08));
 }
+@keyframes search-icon-bounce {
+  0%, 100% { transform: translateY(0%) scale(1); }
+  50% { transform: translateY(0%) scale(1.2); }
+}
 
 /* Animation Float untuk Elemen Chart SVG */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-9px); }
 }
 
 .floating-card {
-  animation: float 4s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
 }
 
 .floating-card-2 {
-  animation: float 5s ease-in-out infinite 1s;
+  animation: float 4s ease-in-out infinite 1s;
 }
 
 /* ===== SECTION CONTENT ===== */
@@ -388,7 +393,7 @@ footer {
       </div>
     </div>
 
-    <!-- Kolom Kanan: Ilustrasi Vektor Karakter Seragam Batik Kemenag -->
+    <!-- Kolom Kanan: Ilustrasi Vektor Karakter Seragam Kemenag -->
     <div class="hero-illustration">
       <svg viewBox="0 0 500 450" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- Background Accent Circle & Waves -->
